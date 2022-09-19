@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-repository",
+  "version": "1.0.0",
+  "description": "Exercise1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msantos9-dev/AngularJS-Repository.git"
+  },
+  "author": "MSantos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msantos9-dev/AngularJS-Repository/issues"
+  },
+  "homepage": "https://github.com/msantos9-dev/AngularJS-Repository#readme",
+  "dependencies": {
+    "typescript": "^4.8.3"
+  }
+}
