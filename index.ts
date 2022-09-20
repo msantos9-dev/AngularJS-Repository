@@ -1,52 +1,56 @@
 
-
-console.log("")
-
-var myCities:string[] = [];
-export const addCity = (...citiesArray:string[]) => {
-    citiesArray.forEach((item) => {
-        console.log(item)
-    })
+interface City {
+  cityName: string;
+  country: string;
+  population: number;
 }
 
+var cityList:City[] = [];
+var myList:string[] = [];
 
-export const addCities = (city:string) => {
-    myCities.push(city);
-    localStorage.setItem(myCities.length.toString(), city);
-    displayCities();
+export const addCity = (cityName:string, country:string, population:number) => {
+  var newCity:City = {cityName:cityName, country:country, population:population};
+    localStorage.setItem(cityList.length.toString(), newCity.cityName);
+    cityList.push(newCity);
+    displayCities(cityList);
 }
 
-export const searchCities = () => {
-    const input = document.getElementById('search') as HTMLInputElement;
-    const value = input?.value;
-    console.log(value)
-
-    console.log(localStorage.getItem("")?.includes(value));
-    
+export const searchCity = (searchKey: string) => {
+var searchCity = cityList
+.filter(c => (c.cityName.indexOf(searchKey) >= 0
+|| c.country.indexOf(searchKey) >= 0));
+displayCities(searchCity);
 }
 
-export const displayCities = () => {
+export const displayCities = (checkList:City[]) => {
 
     let list = document.getElementById('cityList');
-
 
     if(list) {
         while(list.hasChildNodes() && list.firstChild) {
             list.removeChild(list.firstChild)
         }
     }
-    myCities.forEach((item) => {
+    checkList.forEach((city) => {
         if(list) {
             let li = document.createElement("li");
-            li.innerText = item
+            li.innerText = city.cityName + " " + city.country + " " + city.population;
             list.appendChild(li)
         }
     })
 }
 
+function displayItems() {
+  let myList = document.getElementById("cityList");
+  var l, i;
+ // myList = "";
+  for (i = 0; i < localStorage.length; i++) {
+  const x = localStorage.key(i);
+ // document.getElementById("cityList").innerHTML += x + "<br>";
+  }
+}
 
-
-const array = ['a', '0', 'c', '0', 'Marvin','Jose', '0', 'ABC', '0', 'e','a', '0', '123', '0', 'e']
+const array = ['a', '0', 'c', '0', 'Marvin',false, '0', 'ABC', '0', 'e','a', '0', '123', '0', 'e']
 console.log("START ARRAY: " + array)
 
 let newArray: any[] = [];
@@ -109,5 +113,5 @@ function changer(s: string) {
   }
 
   console.log("IS VALID: 23677828X: " + validISBN10("123677828X"))
-  console.log("IS VALID: 236X77828: " + validISBN10("123677828X"))
-  console.log("IS VALID: 2367828X: " + validISBN10("123677828X"))
+  console.log("IS VALID: 236X77828: " + validISBN10("236X77828"))
+  console.log("IS VALID: 2367828X: " + validISBN10("2367828X"))

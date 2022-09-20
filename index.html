@@ -4,61 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script> exports = {_esModule:true} </script>
-    <script src="./index.js"> </script>
+   
 
     <title>Hello Word</title>
 </head>
-<body>
+<body >
     
 <input type="text" id="city" placeholder="Enter City" />
 <input type="text" id="country" placeholder="Enter Country" />
 <input type="text" id="population" placeholder="Enter Population" /><br>
-<input type="text" onkeydown="searchCities()" id="search" placeholder="Enter Text to Search" />
+<input type="text" onkeyup="searchCity(this.value)" id="search" placeholder="Enter Text to Search" />
 
-<button onclick="addCities(document.getElementById('city').value + ', ' + 
+<button onclick="addCity(document.getElementById('city').value + ', ' + 
                         document.getElementById('country').value + ' ' + 
                         document.getElementById('population').value)">Add Directory</button>
 
+<script> exports = {_esModule:true} </script>
+<script src="./index.js"> </script>
+
 <div id="cityList">
-<p id = "1"></p>
-<p id = "2"></p>
-<p id = "3"></p>
-<p id = "4"></p>
-<p id = "5"></p>
-<p id = "6"></p>
-<p id = "7"></p>
-<p id = "8"></p>
-<p id = "9"></p>
-<p id = "10"></p>
-<p id = "11"></p>
-<p id = "12"></p>
-<p id = "13"></p>
-<p id = "14"></p>
-<p id = "15"></p>
+
 </div>
 
-<script>
-    // Retrieve
-    
-    
-       // myList.push(localStorage.getItem(i.toString())!); 
-        //document.getElementById(i.toString()).innerHTML = localStorage.getItem(i.toString())
-        
-        document.getElementById(1).innerHTML = localStorage.getItem(1);
-        document.getElementById(2).innerHTML = localStorage.getItem(2);
-        document.getElementById(3).innerHTML = localStorage.getItem(3);
-        document.getElementById(4).innerHTML = localStorage.getItem(4);
-        document.getElementById(5).innerHTML = localStorage.getItem(5);
-        document.getElementById(6).innerHTML = localStorage.getItem(6);
-        document.getElementById(7).innerHTML = localStorage.getItem(7);
-        document.getElementById(8).innerHTML = localStorage.getItem(8);
-        document.getElementById(9).innerHTML = localStorage.getItem(9);
-        document.getElementById(10).innerHTML = localStorage.getItem(10);
-   
-    
-
-</script>
 
 
 </body>
