@@ -6,19 +6,31 @@ interface City {
 }
 
 var cityList:City[] = [];
-var myList:string[] = [];
 
 export const addCity = (cityName:string, country:string, population:number) => {
-  var newCity:City = {cityName:cityName, country:country, population:population};
+  var newCity:City = {cityName:cityName, country:country, population:population}
     localStorage.setItem(cityList.length.toString(), newCity.cityName);
-    cityList.push(newCity);
+    cityList.push(newCity)
     displayCities(cityList);
+}
+
+var cityFiltered:City[] = [];
+function search(keyword: string){
+
+    for(let index in cityList){
+        if(cityList[index].cityName.includes(keyword)|| cityList[index].country.includes(keyword)){
+          cityFiltered.push(cityList[index]);
+        }
+    }
+    displayCities(cityFiltered);
+    console.info(cityFiltered);
+    
+    cityFiltered = [];
 }
 
 export const searchCity = (searchKey: string) => {
 var searchCity = cityList
-.filter(c => (c.cityName.indexOf(searchKey) >= 0
-|| c.country.indexOf(searchKey) >= 0));
+.filter(c => (c.country.indexOf(searchKey) >= 0));
 displayCities(searchCity);
 }
 
@@ -34,21 +46,16 @@ export const displayCities = (checkList:City[]) => {
     checkList.forEach((city) => {
         if(list) {
             let li = document.createElement("li");
-            li.innerText = city.cityName + " " + city.country + " " + city.population;
-            list.appendChild(li)
+            li.innerText = city.cityName + ", " + city.country + ", " + city.population
+            list?.appendChild(li);
         }
     })
 }
 
-function displayItems() {
-  let myList = document.getElementById("cityList");
-  var l, i;
- // myList = "";
-  for (i = 0; i < localStorage.length; i++) {
-  const x = localStorage.key(i);
- // document.getElementById("cityList").innerHTML += x + "<br>";
-  }
-}
+
+
+
+
 
 const array = ['a', '0', 'c', '0', 'Marvin',false, '0', 'ABC', '0', 'e','a', '0', '123', '0', 'e']
 console.log("START ARRAY: " + array)

@@ -10,12 +10,12 @@
 </head>
 <body >
     
-<input type="text" id="city" placeholder="Enter City" />
+<input type="text" id="cityName" placeholder="Enter City" />
 <input type="text" id="country" placeholder="Enter Country" />
 <input type="text" id="population" placeholder="Enter Population" /><br>
-<input type="text" onkeyup="searchCity(this.value)" id="search" placeholder="Enter Text to Search" />
+<input type="text" onkeyup="search(this.value)" id="search" placeholder="Enter Text to Search" />
 
-<button onclick="addCity(document.getElementById('city').value + ', ' + 
+<button onclick="addCity(document.getElementById('cityName').value + ', ' + 
                         document.getElementById('country').value + ' ' + 
                         document.getElementById('population').value)">Add Directory</button>
 

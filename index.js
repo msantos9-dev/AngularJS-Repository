@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.displayCities = exports.searchCity = exports.addCity = void 0;
 var cityList = [];
-var myList = [];
 const addCity = (cityName, country, population) => {
     var newCity = { cityName: cityName, country: country, population: population };
     localStorage.setItem(cityList.length.toString(), newCity.cityName);
@@ -10,10 +9,20 @@ const addCity = (cityName, country, population) => {
     (0, exports.displayCities)(cityList);
 };
 exports.addCity = addCity;
+var cityFiltered = [];
+function search(keyword) {
+    for (let index in cityList) {
+        if (cityList[index].cityName.includes(keyword) || cityList[index].country.includes(keyword)) {
+            cityFiltered.push(cityList[index]);
+        }
+    }
+    (0, exports.displayCities)(cityFiltered);
+    console.info(cityFiltered);
+    cityFiltered = [];
+}
 const searchCity = (searchKey) => {
     var searchCity = cityList
-        .filter(c => (c.cityName.indexOf(searchKey) >= 0
-        || c.country.indexOf(searchKey) >= 0));
+        .filter(c => (c.country.indexOf(searchKey) >= 0));
     (0, exports.displayCities)(searchCity);
 };
 exports.searchCity = searchCity;
@@ -27,21 +36,12 @@ const displayCities = (checkList) => {
     checkList.forEach((city) => {
         if (list) {
             let li = document.createElement("li");
-            li.innerText = city.cityName + " " + city.country + " " + city.population;
-            list.appendChild(li);
+            li.innerText = city.cityName + ", " + city.country + ", " + city.population;
+            list === null || list === void 0 ? void 0 : list.appendChild(li);
         }
     });
 };
 exports.displayCities = displayCities;
-function displayItems() {
-    let myList = document.getElementById("cityList");
-    var l, i;
-    // myList = "";
-    for (i = 0; i < localStorage.length; i++) {
-        const x = localStorage.key(i);
-        // document.getElementById("cityList").innerHTML += x + "<br>";
-    }
-}
 const array = ['a', '0', 'c', '0', 'Marvin', false, '0', 'ABC', '0', 'e', 'a', '0', '123', '0', 'e'];
 console.log("START ARRAY: " + array);
 let newArray = [];
