@@ -1,32 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.displayCities = exports.searchCity = exports.addCity = void 0;
+exports.addCity = void 0;
 var cityList = [];
-const addCity = (cityName, country, population) => {
-    var newCity = { cityName: cityName, country: country, population: population };
+var stored = [];
+const addCity = (cityName) => {
+    var newCity = { cityName: cityName };
     localStorage.setItem(cityList.length.toString(), newCity.cityName);
     cityList.push(newCity);
-    (0, exports.displayCities)(cityList);
+    displayCities(cityList);
 };
 exports.addCity = addCity;
 var cityFiltered = [];
 function search(keyword) {
     for (let index in cityList) {
-        if (cityList[index].cityName.includes(keyword) || cityList[index].country.includes(keyword)) {
+        if (cityList[index].cityName.includes(keyword)) {
             cityFiltered.push(cityList[index]);
         }
     }
-    (0, exports.displayCities)(cityFiltered);
+    displayCities(cityFiltered);
     console.info(cityFiltered);
     cityFiltered = [];
 }
-const searchCity = (searchKey) => {
-    var searchCity = cityList
-        .filter(c => (c.country.indexOf(searchKey) >= 0));
-    (0, exports.displayCities)(searchCity);
-};
-exports.searchCity = searchCity;
-const displayCities = (checkList) => {
+function displayCities(checkList) {
     let list = document.getElementById('cityList');
     if (list) {
         while (list.hasChildNodes() && list.firstChild) {
@@ -36,12 +31,11 @@ const displayCities = (checkList) => {
     checkList.forEach((city) => {
         if (list) {
             let li = document.createElement("li");
-            li.innerText = city.cityName + ", " + city.country + ", " + city.population;
+            li.innerText = city.cityName;
             list === null || list === void 0 ? void 0 : list.appendChild(li);
         }
     });
-};
-exports.displayCities = displayCities;
+}
 const array = ['a', '0', 'c', '0', 'Marvin', false, '0', 'ABC', '0', 'e', 'a', '0', '123', '0', 'e'];
 console.log("START ARRAY: " + array);
 let newArray = [];

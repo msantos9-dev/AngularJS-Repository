@@ -1,14 +1,13 @@
 
 interface City {
   cityName: string;
-  country: string;
-  population: number;
 }
 
 var cityList:City[] = [];
+var stored:City[] = [];
 
-export const addCity = (cityName:string, country:string, population:number) => {
-  var newCity:City = {cityName:cityName, country:country, population:population}
+export const addCity = (cityName:string) => {
+  var newCity:City = {cityName:cityName}
     localStorage.setItem(cityList.length.toString(), newCity.cityName);
     cityList.push(newCity)
     displayCities(cityList);
@@ -18,7 +17,7 @@ var cityFiltered:City[] = [];
 function search(keyword: string){
 
     for(let index in cityList){
-        if(cityList[index].cityName.includes(keyword)|| cityList[index].country.includes(keyword)){
+        if(cityList[index].cityName.includes(keyword)){
           cityFiltered.push(cityList[index]);
         }
     }
@@ -28,13 +27,7 @@ function search(keyword: string){
     cityFiltered = [];
 }
 
-export const searchCity = (searchKey: string) => {
-var searchCity = cityList
-.filter(c => (c.country.indexOf(searchKey) >= 0));
-displayCities(searchCity);
-}
-
-export const displayCities = (checkList:City[]) => {
+function  displayCities(checkList:City[]) {
 
     let list = document.getElementById('cityList');
 
@@ -46,16 +39,11 @@ export const displayCities = (checkList:City[]) => {
     checkList.forEach((city) => {
         if(list) {
             let li = document.createElement("li");
-            li.innerText = city.cityName + ", " + city.country + ", " + city.population
+            li.innerText = city.cityName 
             list?.appendChild(li);
         }
     })
 }
-
-
-
-
-
 
 const array = ['a', '0', 'c', '0', 'Marvin',false, '0', 'ABC', '0', 'e','a', '0', '123', '0', 'e']
 console.log("START ARRAY: " + array)
